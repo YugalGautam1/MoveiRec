@@ -1,33 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import questionmark from './assets/questionmark.png'
+import transformers from './assets/image1.png'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const mylist = ['movie 1', 'movie 2', 'movie 3', 'movie 4','movie 5']
+  const allMovies = ['Transformers1', 'Transformer2', 'Transformer3', 'Transformers4']
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="title">
+        <h1>Movie Recommender</h1>
+        <form >
+          <input
+          type="text"
+          id="searchedMovie"
+          placeholder="Search for a movie..."
+          className="search-bar"
+          />
+        </form>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className = "subtitle">
+        <h2>Your List </h2>
+        <div className = "image-row">
+        {mylist.map((movie) => (
+            <div className="movie-item">
+              <img src={questionmark} alt="Movie Poster" className="movie-image" />
+              <p className = "movie-name">{movie}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className = "subtitle">
+          <h2>All Movies</h2>
+          <div className = "image-row">
+            {allMovies.map((movie) => (
+            <div className="movie-item">
+              <img src={transformers} alt="Movie Poster" className="movie-image" />
+              <p className = "movie-name">{movie}</p>
+            </div>
+          ))}
+        </div>
+
+        </div>
+        <button className="floating-button">Generate Recommendations</button>
+
+
     </>
   )
 }
